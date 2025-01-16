@@ -1,14 +1,29 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const { name } = useAuth();
-  console.log(name);
-  const { register, handleSubmit } = useForm();
+  const { createUser, updateUserProfile } = useAuth();
+  const { register,reset, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile(data.name, data.photoUrl)
+        .then(result =>{
+            toast.success('Account Created Successfully! 🎉🙌✅')
+            navigate('/');
+        })
+        .catch(err => {
+            toast.error(err.message)
+        })
+      })
+      .catch((err) => {
+        toast.error(`${err.message}😞❌`);
+      });
   };
 
   return (

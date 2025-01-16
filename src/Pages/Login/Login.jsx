@@ -1,11 +1,25 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const {signIn} = useAuth()
   const { register, handleSubmit } = useForm()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const onSubmit = (data) => {
-    console.log(data);
+    signIn(data.email, data.password)
+    .then(result =>{
+      toast.success('Login Successful! 🎉✅')
+      navigate(from, {replace: true});
+    })
+    .catch(err => {
+      toast.error(err.message)
+    })
+
   };
   return (
     <div className="border ">
