@@ -1,9 +1,9 @@
-import Navbar from "../Pages/shared/Navbar";
+import NavbarX from "../Pages/shared/NavbarX";
 
 const MainLayout = () => {
     return (
         <div >
-            <Navbar></Navbar>
+        <NavbarX></NavbarX>
             <h1>hi</h1>
         </div>
     );
