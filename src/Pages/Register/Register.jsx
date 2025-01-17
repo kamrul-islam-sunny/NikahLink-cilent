@@ -3,23 +3,33 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
-  const { register,reset, handleSubmit } = useForm();
+  const { register, reset, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
         updateUserProfile(data.name, data.photoUrl)
-        .then(result =>{
-            toast.success('Account Created Successfully! 🎉🙌✅')
-            navigate('/');
-        })
-        .catch(err => {
-            toast.error(err.message)
-        })
+          .then(() => {
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                toast.success("Account Created Successfully! 🎉🙌✅");
+                navigate("/");
+              }
+            });
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
       })
       .catch((err) => {
         toast.error(`${err.message}😞❌`);

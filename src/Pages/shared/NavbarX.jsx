@@ -1,4 +1,4 @@
-import { Avatar, Button, Navbar } from "flowbite-react";
+import { Button, Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
