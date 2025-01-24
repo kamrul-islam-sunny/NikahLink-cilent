@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
+
 const NavbarX = () => {
   const { user, userLogOut } = useAuth();
   console.log(user);
@@ -33,6 +34,12 @@ const NavbarX = () => {
       <li className="text-lg  text-rose-600">
         <Link>Contact Us</Link>
       </li>
+      {
+        user && user.email? <li className="text-lg  text-rose-600">
+        <Link to={'/dashboard'}>Dashboard</Link>
+      </li> : <></>
+      }
+      
       {/* <Navbar.Link  href="#">About</Navbar.Link>
       <Navbar.Link href="#">Services</Navbar.Link>
       <Navbar.Link href="#">Pricing</Navbar.Link> */}
@@ -58,7 +65,7 @@ const NavbarX = () => {
             <>
               <div className="flex gap-2 items-center">
                 {/* <Avatar img={user.photoURL} alt="avatar of Jese" rounded /> */}
-                <p>{user?.displayName}</p>
+                <p>{user.displayName}</p>
                 <Button onClick={handleLogOut}>logOut</Button>
               </div>
             </>

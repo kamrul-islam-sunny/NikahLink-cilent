@@ -1,6 +1,6 @@
 import { Button, Card, Checkbox, HRText, Label, TextInput } from "flowbite-react";
 import { useForm } from "react-hook-form";
-import { Link, replace, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLoginReg from "../social/SocialLoginReg";
@@ -13,7 +13,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     signIn(data.email, data.password)
-      .then((result) => {
+      .then(() => {
         toast.success("Login Successful! 🎉✅");
         navigate(from, { replace: true });
       })
