@@ -32,10 +32,12 @@ const NavbarX = () => {
         <Link>About Us</Link>
       </li>
       <li className="text-lg  text-rose-600">
-        <Link>Contact Us</Link>
+        {
+          user?.uid ? <Link>Contact Us</Link> : <Link>logout</Link>
+        }
       </li>
       {
-        user && user.email? <li className="text-lg  text-rose-600">
+        user && user.uid? <li className="text-lg  text-rose-600">
         <Link to={'/dashboard'}>Dashboard</Link>
       </li> : <></>
       }
@@ -61,7 +63,7 @@ const NavbarX = () => {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          {user && user?.email ? (
+          {user && user?.uid ? (
             <>
               <div className="flex gap-2 items-center">
                 {/* <Avatar img={user.photoURL} alt="avatar of Jese" rounded /> */}

@@ -1,4 +1,4 @@
-import { Navigate, useLoaderData, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { Spinner } from "flowbite-react";
 

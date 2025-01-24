@@ -5,7 +5,7 @@ import UserSideBar from "../Pages/Dasboard/UserDashboard/UserSideBar";
 import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const role = 'user';
+  const role = 'admin';
 
   return (
     <section className="flex  ">
@@ -16,7 +16,7 @@ const Dashboard = () => {
           <UserSideBar></UserSideBar>
         )}
       </div>
-      <div className="flex-1 my-2 bg-gray-200 rounded-lg">
+      <div className="flex-1 my-2 py-4 bg-gray-200 rounded-lg">
         <Outlet></Outlet>
       </div>
     </section>

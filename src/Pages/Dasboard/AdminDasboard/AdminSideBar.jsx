@@ -1,6 +1,7 @@
 import { Sidebar } from "flowbite-react";
 import { HiChartPie, HiLogout } from "react-icons/hi";
 import { FaCrown, FaUserCheck, FaUsersCog } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AdminSideBar = () => {
   return (
@@ -15,10 +16,10 @@ const AdminSideBar = () => {
         <Sidebar.Items className=" bg-gray-200 rounded-lg">
           <Sidebar.ItemGroup>
             <Sidebar.Item href="#" icon={HiChartPie}>
-              Admin Dashboard
+              <Link to={'adminDashboard'}>Admin Dashboard</Link>
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={FaUsersCog} className="rounded-none">
-              Manage Users
+              <Link to={'manageUser'}>Manage Users</Link>
             </Sidebar.Item>
             <Sidebar.Item className="rounded-none" href="#" icon={FaCrown}>
               Approved Premium

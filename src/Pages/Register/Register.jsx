@@ -24,8 +24,9 @@ const Register = () => {
         updateUserProfile(data.name, data.photoUrl)
           .then(() => {
             const userInfo = {
-              name: data.name,
-              email: data.email,
+              userName: data.name,
+              userEmail: data.email,
+              role:"user"
             };
             setUser((prev) => {
               return {

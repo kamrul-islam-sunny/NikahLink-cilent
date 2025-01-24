@@ -12,9 +12,8 @@ const UserSideBar = () => {
         </Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="dashboard/EditBioData" icon={HiPencilAlt}>
-              {/* <Link to={"EditBioData"}>Edit BioData</Link> */}
-              Edit BioData
+            <Sidebar.Item  icon={HiPencilAlt}>
+              <Link to={"EditBioData"}>Edit BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiEye}>
               <Link to={'viewBioData'}>View BioData</Link>

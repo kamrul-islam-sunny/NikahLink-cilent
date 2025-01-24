@@ -2,7 +2,7 @@ import { TextInput, Select, Button, Datepicker } from "flowbite-react";
 import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 const EditBioData = () => {
   const divisions = [
     "Dhaka",
@@ -22,7 +22,7 @@ const EditBioData = () => {
   }, [user, setValue]);
   const onSubmit = (data) => {
     console.log(data);
-    axiosPublic.post('/bioData', data)
+    axiosPublic.patch('/bioData', data)
     .then(res =>{
       console.log(res.data)
     })
