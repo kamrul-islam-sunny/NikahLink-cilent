@@ -20,21 +20,15 @@ const Register = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
         updateUserProfile(data.name, data.photoUrl)
-          .then(() => {
+        .then(() => {
+            console.log(result.user);
             const userInfo = {
               userName: data.name,
               userEmail: data.email,
               role:"user"
             };
-            setUser((prev) => {
-              return {
-                ...prev,
-                displayName: userInfo.name,
-                email: userInfo.email,
-              };
-            });
+            setUser(result.user)
             axiosPublic.post("/user", userInfo).then((res) => {
               if (res.data.insertedId) {
                 toast.success("Account Created Successfully! 🎉🙌✅");

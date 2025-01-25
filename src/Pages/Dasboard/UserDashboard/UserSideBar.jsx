@@ -1,9 +1,12 @@
 import { Sidebar } from "flowbite-react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { HiEye, HiHeart, HiLogout, HiPencilAlt } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const UserSideBar = () => {
+  const location = useLocation(); 
+  console.log(location)
+  const isActive = (path) => location.pathname === path;
   return (
     <div>
       <Sidebar aria-label="Sidebar with logo branding example">
@@ -12,17 +15,17 @@ const UserSideBar = () => {
         </Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item  icon={HiPencilAlt}>
-              <Link to={"EditBioData"}>Edit BioData</Link>
+            <Sidebar.Item icon={HiPencilAlt}>
+              <Link to={"EditBioData"} className={isActive("/dashboard/EditBioData") ? "text-blue-600" : ""}>Edit BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiEye}>
-              <Link to={'viewBioData'}>View BioData</Link>
+              <Link to={"viewBioData"}  className={isActive("/dashboard/viewBioData") ? "text-blue-600" : ""}>View BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={FaEnvelopeOpen}>
-              <Link to={'contactRequest'}>My Contact Request</Link>
+              <Link to={"contactRequest"}>My Contact Request</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiHeart}>
-              <Link to={'favourites'}>favourites BioData</Link>
+              <Link to={"favourites"}>favourites BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiLogout}>LogOut</Sidebar.Item>
           </Sidebar.ItemGroup>

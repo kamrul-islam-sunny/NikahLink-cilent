@@ -3,7 +3,11 @@ import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { use } from "react";
+import useSingleBioData from "../../../../Hooks/useSingleBioData";
 const EditBioData = () => {
+  const { user , loading} = useAuth();
   const divisions = [
     "Dhaka",
     "Chattagra",
@@ -13,8 +17,9 @@ const EditBioData = () => {
     "Mymensingh",
     "Sylhet",
   ];
-  const { user } = useAuth();
-  
+
+  console.log(user);
+
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit, setValue } = useForm();
   useEffect(() => {
@@ -22,15 +27,17 @@ const EditBioData = () => {
   }, [user, setValue]);
   const onSubmit = (data) => {
     console.log(data);
-    axiosPublic.patch('/bioData', data)
-    .then(res =>{
-      console.log(res.data)
-    })
+    axiosPublic.patch("/bioData", data).then((res) => {
+      console.log(res.data);
+    });
   };
+
+  const data = useSingleBioData() 
 
   return (
     <div className="p-4">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>{user?.email}</h1>
         <div className="space-y-4">
           <div className="flex gap-2">
             {/* Name */}
@@ -41,6 +48,7 @@ const EditBioData = () => {
               <TextInput
                 {...register("name")}
                 type="text"
+                defaultValue={data?.name}
                 placeholder="Enter your full name"
                 required
               />
@@ -51,7 +59,7 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Biodata Type
               </label>
-              <Select required {...register("gander")}>
+              <Select defaultValue={data?.gander} required {...register("gander")}>
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -66,6 +74,7 @@ const EditBioData = () => {
                 Profile Image Link
               </label>
               <TextInput
+              defaultValue={data?.photoUrl}
                 {...register("photoUrl")}
                 type="text"
                 placeholder="Paste your image link"
@@ -79,7 +88,7 @@ const EditBioData = () => {
               </label>
               <Datepicker
                 required
-                // {...register("birth")}
+                defaultValue={data?.birth ? new Date(data.birth) : null}
                 onChange={(date) => setValue("birth", date)}
                 placeholder="Select your birth date"
               />
@@ -92,7 +101,7 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Race
               </label>
-              <Select required {...register("race")}>
+              <Select defaultValue={data?.race} required {...register("race")}>
                 <option value="">Select Race</option>
                 <option value="Fair">Fair</option>
                 <option value="Medium">Medium</option>
@@ -107,6 +116,7 @@ const EditBioData = () => {
               </label>
               <TextInput
                 {...register("age")}
+                defaultValue={data?.age}
                 type="number"
                 placeholder="Enter your Age"
                 required
@@ -123,6 +133,7 @@ const EditBioData = () => {
               <div className="flex gap-2">
                 <select
                   id="height-feet"
+                  defaultValue={data?.feet}
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   required
                   {...register("feet")}
@@ -139,6 +150,7 @@ const EditBioData = () => {
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   required
                   {...register("inch")}
+                  defaultValue={data?.inch}
                 >
                   <option value="">Select Inch</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map((inch) => (
@@ -157,7 +169,7 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Weight
               </label>
-              <Select required {...register("weight")}>
+              <Select defaultValue={data?.weight} required {...register("weight")}>
                 <option value="">Select Weight</option>
                 <option value="50kg">50kg</option>
                 <option value="60kg">60kg</option>
@@ -170,7 +182,7 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Occupation
               </label>
-              <Select required {...register("occupation")}>
+              <Select defaultValue={data?.occupation} required {...register("occupation")}>
                 <option value="">Select Occupation</option>
                 <option value="Engineer">Engineer</option>
                 <option value="Doctor">Doctor</option>
@@ -187,6 +199,7 @@ const EditBioData = () => {
               </label>
               <TextInput
                 {...register("fatherName")}
+                defaultValue={data?.fatherName}
                 type="text"
                 placeholder="Father's name"
               />
@@ -198,6 +211,7 @@ const EditBioData = () => {
                 Mother`s Name
               </label>
               <TextInput
+               defaultValue={data?.matherName}
                 {...register("matherName")}
                 type="text"
                 placeholder="Mother's name"
@@ -214,6 +228,7 @@ const EditBioData = () => {
               <Select required>
                 {divisions.map((division, index) => (
                   <option
+                  defaultValue={data?.perDivision}
                     {...register("perDivision")}
                     key={index}
                     value={division}
@@ -229,7 +244,7 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Present Division
               </label>
-              <Select required {...register("presentDivision")}>
+              <Select defaultValue={data?.presentDivision} required {...register("presentDivision")}>
                 {divisions.map((division, index) => (
                   <option key={index} value={division}>
                     {division}
@@ -247,6 +262,7 @@ const EditBioData = () => {
               </label>
               <TextInput
                 type="number"
+                defaultValue={data?.partnerAge}
                 {...register("partnerAge")}
                 placeholder="Enter expected partner age"
               />
@@ -263,6 +279,7 @@ const EditBioData = () => {
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   required
                   {...register("PartnerFeet")}
+                  defaultValue={data?.PartnerFeet}
                 >
                   <option value="">Select Feet</option>
                   {Array.from({ length: 9 }, (_, i) => i + 3).map((foot) => (
@@ -276,6 +293,7 @@ const EditBioData = () => {
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   required
                   {...register("PartnerInch")}
+                  defaultValue={data?.PartnerInch}
                 >
                   <option value="">Select Inch</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map((inch) => (
@@ -293,7 +311,7 @@ const EditBioData = () => {
             <label className="block text-sm font-medium text-gray-700">
               Expected Partner Weight
             </label>
-            <Select required {...register("partnerWeight")}>
+            <Select  defaultValue={data?.partnerWeight} required {...register("partnerWeight")}>
               <option value="">Select Weight</option>
               <option value="50kg">50kg</option>
               <option value="60kg">60kg</option>
@@ -321,6 +339,7 @@ const EditBioData = () => {
             </label>
             <TextInput
               {...register("phoneNumber")}
+              defaultValue={data?.phoneNumber}
               type="tel"
               placeholder="Enter your mobile number"
             />

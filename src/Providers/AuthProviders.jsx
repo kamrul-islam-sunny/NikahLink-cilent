@@ -13,6 +13,8 @@ import auth from "../Firebase/firebase.init";
 
 
 const provider = new GoogleAuthProvider();
+
+
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
   const [Loading, setLoading] = useState(true);
@@ -49,7 +51,6 @@ const AuthProviders = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   }
-
 
 
   useEffect(() => {

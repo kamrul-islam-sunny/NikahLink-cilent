@@ -29,6 +29,14 @@ const ManageUser = () => {
     });
   };
 
+  // const handleDelete = (id) =>{
+  //   axiosPublic.delete(`/userDelete/${id}`)
+  //   .then(res =>{
+  //     console.log(res)
+  //     refetch();
+  //   })
+  // }
+
   return (
     <div className="px-4">
       <h1>Manage user</h1>
