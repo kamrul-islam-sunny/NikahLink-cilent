@@ -10,7 +10,7 @@ const AdminSideBar = () => {
         className="w-full"
         aria-label="Sidebar with logo branding example"
       >
-        <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">
+        <Sidebar.Logo href="/" img="/favicon.svg" imgAlt="Flowbite logo">
           Flowbite
         </Sidebar.Logo>
         <Sidebar.Items className=" bg-gray-200 rounded-lg">
@@ -19,7 +19,7 @@ const AdminSideBar = () => {
               <Link to={'adminDashboard'}>Admin Dashboard</Link>
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={FaUsersCog} className="rounded-none">
-              <Link to={'manageUser'}>Manage Users</Link>
+              <Link to={'manage'}>Manage Users</Link>
             </Sidebar.Item>
             <Sidebar.Item className="rounded-none" href="#" icon={FaCrown}>
               Approved Premium

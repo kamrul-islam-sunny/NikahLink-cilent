@@ -32,9 +32,7 @@ const NavbarX = () => {
         <Link>About Us</Link>
       </li>
       <li className="text-lg  text-rose-600">
-        {
-          user?.uid ? <Link>Contact Us</Link> : <Link>logout</Link>
-        }
+         <Link>Contact Us</Link> 
       </li>
       {
         user && user.uid? <li className="text-lg  text-rose-600">

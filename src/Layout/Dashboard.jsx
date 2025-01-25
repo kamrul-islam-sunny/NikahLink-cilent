@@ -1,16 +1,18 @@
 
+import useAdmin from "../Hooks/useAdmin";
 import AdminSideBar from "../Pages/Dasboard/AdminDasboard/AdminSideBar";
 import UserSideBar from "../Pages/Dasboard/UserDashboard/UserSideBar";
 
 import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const role = 'admin';
+  const [isAdmin] = useAdmin()
+ 
 
   return (
     <section className="flex  ">
       <div className="w-1/4">
-        {role === 'admin' ? ( 
+        {isAdmin ? ( 
           <AdminSideBar></AdminSideBar>
         ) : (
           <UserSideBar></UserSideBar>

@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element:<AdminDashboard></AdminDashboard>
       },
       {
-        path:'manageUser',
+        path:'manage',
         element:<ManageUser></ManageUser>
       },
     ]
