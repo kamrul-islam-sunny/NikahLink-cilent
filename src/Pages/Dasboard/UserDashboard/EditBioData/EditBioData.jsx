@@ -3,11 +3,11 @@ import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { use } from "react";
 import useSingleBioData from "../../../../Hooks/useSingleBioData";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const EditBioData = () => {
-  const { user , loading} = useAuth();
+  const { user } = useAuth();
   const divisions = [
     "Dhaka",
     "Chattagra",
@@ -25,13 +25,26 @@ const EditBioData = () => {
   useEffect(() => {
     setValue("email", user?.email || "");
   }, [user, setValue]);
+  const navigate = useNavigate()
   const onSubmit = (data) => {
+
     console.log(data);
+    if(!data.birth)
+    {
+      toast.error('Date of birth not filled up.')
+      return;
+    }
     axiosPublic.patch("/bioData", data).then((res) => {
       console.log(res.data);
+      if(res.data.modifiedCount)
+      {
+        toast.success('You bioData Successful Updated.')
+        navigate('/dashboard/viewBioData')
+      }
     });
-  };
 
+  };
+ 
   const data = useSingleBioData() 
 
   return (
@@ -88,7 +101,7 @@ const EditBioData = () => {
               </label>
               <Datepicker
                 required
-                defaultValue={data?.birth ? new Date(data.birth) : null}
+                // defaultValue={data?.birth ? new Date(data.birth) : null}
                 onChange={(date) => setValue("birth", date)}
                 placeholder="Select your birth date"
               />
@@ -202,6 +215,7 @@ const EditBioData = () => {
                 defaultValue={data?.fatherName}
                 type="text"
                 placeholder="Father's name"
+                required
               />
             </div>
 
@@ -215,6 +229,7 @@ const EditBioData = () => {
                 {...register("matherName")}
                 type="text"
                 placeholder="Mother's name"
+                required
               />
             </div>
           </div>
@@ -230,6 +245,7 @@ const EditBioData = () => {
                   <option
                   defaultValue={data?.perDivision}
                     {...register("perDivision")}
+                    required
                     key={index}
                     value={division}
                   >
@@ -262,6 +278,7 @@ const EditBioData = () => {
               </label>
               <TextInput
                 type="number"
+                required
                 defaultValue={data?.partnerAge}
                 {...register("partnerAge")}
                 placeholder="Enter expected partner age"
@@ -339,6 +356,7 @@ const EditBioData = () => {
             </label>
             <TextInput
               {...register("phoneNumber")}
+              required
               defaultValue={data?.phoneNumber}
               type="tel"
               placeholder="Enter your mobile number"

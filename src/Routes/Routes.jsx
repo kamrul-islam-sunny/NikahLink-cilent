@@ -7,6 +7,7 @@ import EditBioData from "../Pages/Dasboard/UserDashboard/EditBioData/EditBioData
 import ViewBioData from "../Pages/Dasboard/UserDashboard/ViewBioData/ViewBioData";
 import AdminDashboard from "../Pages/Dasboard/AdminDasboard/adminDashboard/AdminDashboard";
 import ManageUser from "../Pages/Dasboard/AdminDasboard/manageUser/ManageUser";
+import ApprovedPremium from "../Pages/Dasboard/UserDashboard/ApprovedPremium/ApprovedPremium";
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
         path:'ViewBioData',
         element: <ViewBioData></ViewBioData>
       },
+     
 
       // admin route
       {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
       {
         path:'manage',
         element:<ManageUser></ManageUser>
+      },
+      {
+        path:'approvedPremium',
+        element: <ApprovedPremium></ApprovedPremium>
       },
     ]
   }

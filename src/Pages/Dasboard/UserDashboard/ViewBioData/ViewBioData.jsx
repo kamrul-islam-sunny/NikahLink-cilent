@@ -3,10 +3,14 @@ import AboutYour from "../../../../components/viewBiodataComponents/AboutYour";
 import ExpectedPartner from "../../../../components/viewBiodataComponents/ExpectedPartner";
 import { Button } from "flowbite-react";
 import FlowbiteModal from "../../../../components/modal/FlowbiteModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useSingleBioData from "../../../../Hooks/useSingleBioData";
 
 const ViewBioData = () => {
   let [isOpen, setIsOpen] = useState(false);
+  const singleData = useSingleBioData();
+
+
   return (
     <div>
       <h1 className="text-center text-5xl font-bold py-8">Your BioData</h1>

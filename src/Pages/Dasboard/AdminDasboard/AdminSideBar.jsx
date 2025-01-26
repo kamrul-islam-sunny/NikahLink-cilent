@@ -21,8 +21,10 @@ const AdminSideBar = () => {
             <Sidebar.Item href="#" icon={FaUsersCog} className="rounded-none">
               <Link to={'manage'}>Manage Users</Link>
             </Sidebar.Item>
-            <Sidebar.Item className="rounded-none" href="#" icon={FaCrown}>
+            <Sidebar.Item className="rounded-none" icon={FaCrown}>
+              <Link to={'approvedPremium'}>
               Approved Premium
+              </Link>
             </Sidebar.Item>
             <Sidebar.Item className="" href="#" icon={FaUserCheck}>
               Approved Contact <br /> Request

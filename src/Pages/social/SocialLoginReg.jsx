@@ -15,9 +15,10 @@ const SocialLoginReg = () => {
     socialSignIn()
       .then((result) => {
         const userInfo = {
-          userName: result.user?.displayName,
-          userEmail: result.user?.email,
-          role: "user"
+          name: result.user?.displayName,
+          email: result.user?.email,
+          role: "user",
+          bioDataId:0
         };
         axiosPublic.post("/user", userInfo).then(() => {
           navigate(from, { replace: true });

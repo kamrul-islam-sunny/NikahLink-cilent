@@ -4,10 +4,20 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
 
+const FlowbiteModal = ({ isOpen, setIsOpen }) => {
+  const axiosPublic = useAxiosPublic()
+  const {user} = useAuth()
+  const handleReqPremium = () =>{
+    axiosPublic.patch(`/user/request_premium/${user?.email}`)
+    .then(res => {
+      console.log(res.data)
+      setIsOpen(false)
+    })
+  }
 
-const FlowbiteModal = ({isOpen, setIsOpen}) => {
-  
   return (
     <div>
       <Dialog
@@ -15,21 +25,33 @@ const FlowbiteModal = ({isOpen, setIsOpen}) => {
         onClose={() => setIsOpen(false)}
         className="relative z-50"
       >
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
-            <DialogTitle className="font-bold">Deactivate account</DialogTitle>
-            <Description>
-              This will permanently deactivate your account
-            </Description>
-            <p>
-              Are you sure you want to deactivate your account? All of your data
-              will be permanently removed.
-            </p>
-            <div className="flex gap-4">
-              <button onClick={() => setIsOpen(false)}>Cancel</button>
-              <button onClick={() => setIsOpen(false)}>Deactivate</button>
-            </div>
-          </DialogPanel>
+        {/* Add backdrop blur */}
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm">
+          {/* Modal Content */}
+          <div className="fixed inset-0 flex items-center justify-center p-4">
+            <DialogPanel className="max-w-lg space-y-4 border bg-white p-12 text-center rounded-lg shadow-lg">
+              <DialogTitle className="font-bold text-xl">
+                Confirm Premium Request
+              </DialogTitle>
+              <Description>
+                Are you sure you want to make your biodata premium?
+              </Description>
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleReqPremium}
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Confirm
+                </button>
+              </div>
+            </DialogPanel>
+          </div>
         </div>
       </Dialog>
     </div>

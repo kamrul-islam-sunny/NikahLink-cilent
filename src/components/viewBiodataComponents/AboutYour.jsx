@@ -11,7 +11,6 @@ const AboutYour = () => {
         name,
         occupation,
       } = singleData;
-      console.log(singleData)
     return (
         <div>
             <div className="border border-gray-300 mx-4 rounded-lg ">

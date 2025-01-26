@@ -24,9 +24,10 @@ const Register = () => {
         .then(() => {
             console.log(result.user);
             const userInfo = {
-              userName: data.name,
-              userEmail: data.email,
-              role:"user"
+              name: data.name,
+              email: data.email,
+              role:"user",
+              bioDataId:0
             };
             setUser(result.user)
             axiosPublic.post("/user", userInfo).then((res) => {

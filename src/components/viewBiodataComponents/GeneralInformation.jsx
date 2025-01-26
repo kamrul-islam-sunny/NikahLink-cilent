@@ -13,8 +13,9 @@ const GeneralInformation = () => {
     weight,
     birth,
   } = singleData;
+
   const brithDate = new Date(birth).toLocaleDateString();
-  console.log(singleData);
+
   return (
     <div className="border border-gray-300 mx-4 rounded-lg ">
       <h1 className="text-2xl text-center py-6">General information</h1>

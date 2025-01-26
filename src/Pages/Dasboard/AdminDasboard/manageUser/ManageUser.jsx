@@ -8,7 +8,7 @@ const ManageUser = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/users");
+      const res = await axiosPublic.get("/allBioData");
       return res.data;
     },
   });
@@ -55,9 +55,9 @@ const ManageUser = () => {
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {user.userName}
+                  {user.name}
                 </Table.Cell>
-                <Table.Cell>{user.userEmail}</Table.Cell>
+                <Table.Cell>{user.email}</Table.Cell>
                 <Table.Cell>
                   {user.role === "admin" ? (
                     "Admin"
