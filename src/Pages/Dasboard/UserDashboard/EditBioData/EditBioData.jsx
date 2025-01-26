@@ -143,7 +143,8 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Height
               </label>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                <h1>Feet:</h1>
                 <select
                   id="height-feet"
                   defaultValue={data?.feet}
@@ -158,6 +159,7 @@ const EditBioData = () => {
                     </option>
                   ))}
                 </select>
+                <h1>Inch:</h1>
                 <select
                   id="height-inch"
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -200,6 +202,9 @@ const EditBioData = () => {
                 <option value="Engineer">Engineer</option>
                 <option value="Doctor">Doctor</option>
                 <option value="Teacher">Teacher</option>
+                <option value="Teacher">Student</option>
+                <option value="Teacher">Job</option>
+                <option value="Teacher">House wife</option>
               </Select>
             </div>
           </div>
@@ -290,7 +295,8 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Expected Partner Height
               </label>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                <h1>Feet:</h1>
                 <select
                   id="Partner-height-feet"
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -305,6 +311,7 @@ const EditBioData = () => {
                     </option>
                   ))}
                 </select>
+                <h1>Inch:</h1>
                 <select
                   id="Partner-height-inch"
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"

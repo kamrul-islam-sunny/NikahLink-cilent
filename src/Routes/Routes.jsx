@@ -8,6 +8,9 @@ import ViewBioData from "../Pages/Dasboard/UserDashboard/ViewBioData/ViewBioData
 import AdminDashboard from "../Pages/Dasboard/AdminDasboard/adminDashboard/AdminDashboard";
 import ManageUser from "../Pages/Dasboard/AdminDasboard/manageUser/ManageUser";
 import ApprovedPremium from "../Pages/Dasboard/UserDashboard/ApprovedPremium/ApprovedPremium";
+import Home from "../Pages/Home/homepage/Home";
+import BioDetails from "../Pages/bioDataDetailsPage/BioDetails";
+
 
 
 const router = createBrowserRouter([
@@ -16,6 +19,10 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -23,6 +30,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path:'/BioDataDetails/:id',
+        element: <BioDetails></BioDetails>
+      }
     ],
   },
   {

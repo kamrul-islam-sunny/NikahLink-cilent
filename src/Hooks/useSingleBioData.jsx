@@ -9,7 +9,7 @@ const useSingleBioData = () => {
     const { data: singleData = {} } = useQuery({
       queryKey: ["singleBioData", user?.email],
       queryFn: async () => {
-        const res = await axiosPublic.get(`viewBioData/?email=${user?.email}`);
+        const res = await axiosPublic.get(`/viewBioData/?email=${user?.email}`);
         return res.data;
       },
     });

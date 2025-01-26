@@ -7,9 +7,13 @@ import {
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 
+import toast from "react-hot-toast";
+
 const FlowbiteModal = ({ isOpen, setIsOpen }) => {
   const axiosPublic = useAxiosPublic()
   const {user} = useAuth()
+
+
   const handleReqPremium = () =>{
     axiosPublic.patch(`/user/request_premium/${user?.email}`)
     .then(res => {

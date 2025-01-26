@@ -1,18 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+
 import { Button, Table } from "flowbite-react";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import useAllUser from "../../../../Hooks/useAllUser";
 
 const ManageUser = () => {
-  const axiosPublic = useAxiosPublic();
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/allBioData");
-      return res.data;
-    },
-  });
-  console.log(users);
+  const [users, refetch] = useAllUser()
+  // console.log(users);
   const axiosSecure = useAxiosSecure();
 
   const handleAdmin = (id) => {

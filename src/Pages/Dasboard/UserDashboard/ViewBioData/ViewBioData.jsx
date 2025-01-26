@@ -3,11 +3,13 @@ import AboutYour from "../../../../components/viewBiodataComponents/AboutYour";
 import ExpectedPartner from "../../../../components/viewBiodataComponents/ExpectedPartner";
 import { Button } from "flowbite-react";
 import FlowbiteModal from "../../../../components/modal/FlowbiteModal";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import useSingleBioData from "../../../../Hooks/useSingleBioData";
+
 
 const ViewBioData = () => {
   let [isOpen, setIsOpen] = useState(false);
+
   const singleData = useSingleBioData();
 
 
@@ -19,8 +21,8 @@ const ViewBioData = () => {
         <AboutYour></AboutYour>
         <br />
         <ExpectedPartner></ExpectedPartner>
-        <Button onClick={() => setIsOpen(true)} className="mx-auto my-6">Premium</Button>
-        <FlowbiteModal isOpen={isOpen} setIsOpen={setIsOpen}></FlowbiteModal>
+        <Button disabled={singleData.reqPremium === "approve" || singleData.reqPremium === "pending"? true : false } onClick={() => setIsOpen(true)} className="mx-auto my-6">Premium</Button>
+        <FlowbiteModal  isOpen={isOpen} setIsOpen={setIsOpen}></FlowbiteModal>
     </div>
   );
 };

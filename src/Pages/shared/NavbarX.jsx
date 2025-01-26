@@ -9,14 +9,14 @@ import { useEffect, useState } from "react";
 const NavbarX = () => {
 
   const { user, userLogOut } = useAuth();
-  console.log('before',user);
+
   const [userName, setUserName] = useState('')
   useEffect(()=>{
     setUserName(user?.displayName)
     console.log('setKour',user?.displayName)
   },[user])
 
-  console.log('after',user);
+
 
   const handleLogOut = () => {
     console.log("signout");
