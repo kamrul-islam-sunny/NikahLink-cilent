@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import BioData from "../../../components/BioDataCart/BioData";
 import useAllUser from "../../../Hooks/useAllUser";
-import { Button } from "flowbite-react";
-// /biodata?email=email@gmail.com&?
+import { Button, Spinner } from "flowbite-react";
 const PreMemberProfile = () => {
-  const [users] = useAllUser();
-    console.log(users)
-    useEffect(()=>{
-      setAllBioData(users)
-    },[users])
+  const [users, , isPending] = useAllUser();
+  console.log(users);
+  useEffect(() => {
+    setAllBioData(users);
+  }, [users]);
   const [allBioData, setAllBioData] = useState([]);
   const handleAscending = () => {
     const sorted = [...users].sort((a, b) => {
@@ -17,6 +16,19 @@ const PreMemberProfile = () => {
     setAllBioData(sorted);
   };
   console.log(allBioData);
+
+  if (isPending) {
+    return (
+      <div className="text-center">
+        {" "}
+        <Spinner
+          aria-label="Center-aligned Extra large spinner example"
+          size="xl"
+        />
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>premium member</h1>

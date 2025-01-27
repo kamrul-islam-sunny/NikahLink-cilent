@@ -1,44 +1,50 @@
 import { Button, Card, Table } from "flowbite-react";
-import { FaRegHeart } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useIsPremium from "../../Hooks/useIsPremium";
+import useIsPayment from "../../Hooks/useIsPayment";
+import { MdVerified } from "react-icons/md";
+import FavoriteButton from "./FavoriteButton";
+import { useEffect, useState } from "react";
 
 const BioDetails = () => {
   const { id } = useParams();
   const [isPremium] = useIsPremium();
-  console.log(isPremium);
   const axiosPublic = useAxiosPublic();
   const { data } = useQuery({
     queryKey: ["bioDataDetails"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/bioData/${id}`);
-      console.log(res.data);
       return res.data;
     },
   });
-  console.log(data);
+
+  const isPayment = useIsPayment(data?.bioDataId);
+
   return (
     <div className="grid grid-cols-6 py-10">
       <div className="col-span-2 ">
-        <Card className="max-w-80">
-          <div className="flex justify-end px-4 pt-4">
-            <Button>
-              <FaRegHeart className="text-2xl text-rose-600"></FaRegHeart>
-            </Button>
+        <Card className="max-w-80 relative">
+          <div className="flex justify-end absolute top-4 left-4 right-4 px-4 pt-4">
+            <FavoriteButton data={data}></FavoriteButton>
           </div>
           <div className="flex flex-col items-center pb-10">
             <img
-              className="rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto"
+              className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
+                data?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
+              }  shadow-yellow-200`}
               src="https://static.vecteezy.com/system/resources/previews/029/156/311/non_2x/male-muslim-avatar-icon-islam-arabic-man-in-traditional-muslim-hat-middle-eastern-human-profile-filled-style-pictogram-for-ramadan-eid-logo-illustration-design-on-white-background-eps-10-vector.jpg"
               alt=""
             />
             <h5 className="mb-1 mt-2 text-xl font-medium text-gray-900 dark:text-white">
               BioData Id
             </h5>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-base text-gray-500 dark:text-gray-400 flex items-center gap-2">
               id-{data?.bioDataId}
+              {data?.type && (
+                <MdVerified className="text-2xl text-green-500"></MdVerified>
+              )}
             </span>
             <div className="mt-4 w-full">
               <Table>
@@ -295,7 +301,7 @@ const BioDetails = () => {
           </div>
         ) : (
           <Link to={`/checkout/${data?.bioDataId}`}>
-            <Button color="pink" className="ml-4">
+            <Button disabled={isPayment} color="pink" className="ml-4">
               contact request
             </Button>
           </Link>

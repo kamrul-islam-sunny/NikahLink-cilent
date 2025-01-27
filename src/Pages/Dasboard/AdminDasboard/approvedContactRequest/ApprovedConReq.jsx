@@ -1,16 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "flowbite-react";
+import { Button, Table } from "flowbite-react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const ApprovedConReq = () => {
-    const axiosSecure = useAxiosSecure()
-    const {data: payments = [] } = useQuery({
-        queryKey:['contactReq'],
-        queryFn: async ()=>{
-            const res = await axiosSecure.get('/payments')
-            return res.data
-        }
-    }) 
+  const axiosSecure = useAxiosSecure();
+  const { data: payments = [] } = useQuery({
+    queryKey: ["contactReq"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/payments");
+      return res.data;
+    },
+  });
+
+  const handleApproved = () =>{
+    
+  }
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Contact Requests</h1>
@@ -31,12 +35,18 @@ const ApprovedConReq = () => {
                 {request.name}
               </Table.Cell>
               <Table.Cell>{request.email}</Table.Cell>
-              <Table.Cell>{request.biodataId}</Table.Cell>
+              <Table.Cell>{request.bioDataId}</Table.Cell>
               <Table.Cell>
-                {request.isApproved ? (
-                  <span className="text-green-600 font-semibold">Approved</span>
+                {request.status === "pending" ? (
+                  <Button
+                    className="bg-blue-200 text-blue-500 font-semibold"
+                    color="gray"
+                    size="xs"
+                  >
+                    Approved
+                  </Button>
                 ) : (
-                  <span className="text-red-600 font-semibold">Pending</span>
+                  <span className="text-green-500 font-semibold">Approved </span>
                 )}
               </Table.Cell>
             </Table.Row>

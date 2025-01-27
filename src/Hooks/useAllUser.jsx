@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 const useAllUser = () => {
 
     const axiosPublic = useAxiosPublic();
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isPending } = useQuery({
       queryKey: ["users"],
       queryFn: async () => {
         const res = await axiosPublic.get("/allBioData");
@@ -13,7 +13,7 @@ const useAllUser = () => {
       },
     });
 
-    return [users, refetch]
+    return [users, refetch,isPending]
 };
 
 export default useAllUser;

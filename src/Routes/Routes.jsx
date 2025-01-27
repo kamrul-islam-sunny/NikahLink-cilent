@@ -12,6 +12,7 @@ import Home from "../Pages/Home/homepage/Home";
 import BioDetails from "../Pages/bioDataDetailsPage/BioDetails";
 import Payment from "../Pages/checkOutPage/Payment";
 import ApprovedConReq from "../Pages/Dasboard/AdminDasboard/approvedContactRequest/ApprovedConReq";
+import MyContactReq from "../Pages/Dasboard/UserDashboard/MyContactReq/MyContactReq";
 
 
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'EditBioData',
         element: <EditBioData></EditBioData>
+      },
+      {
+        path:'my-contact-request',
+        element: <MyContactReq></MyContactReq>
       },
      
 
