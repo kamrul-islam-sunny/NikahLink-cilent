@@ -16,18 +16,17 @@ const AdminSideBar = () => {
         <Sidebar.Items className=" bg-gray-200 rounded-lg">
           <Sidebar.ItemGroup>
             <Sidebar.Item href="#" icon={HiChartPie}>
-              <Link to={'adminDashboard'}>Admin Dashboard</Link>
+              <Link to={"adminDashboard"}>Admin Dashboard</Link>
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={FaUsersCog} className="rounded-none">
-              <Link to={'manage'}>Manage Users</Link>
+              <Link to={"manage"}>Manage Users</Link>
             </Sidebar.Item>
             <Sidebar.Item className="rounded-none" icon={FaCrown}>
-              <Link to={'approvedPremium'}>
-              Approved Premium
-              </Link>
+              <Link to={"approvedPremium"}>Approved Premium</Link>
             </Sidebar.Item>
-            <Sidebar.Item className="" href="#" icon={FaUserCheck}>
-              Approved Contact <br /> Request
+            <Sidebar.Item className="" icon={FaUserCheck}>
+              <Link to={"approvedContactRequest"}> Approved Contact <br /> Request</Link>
+             
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={HiLogout}>
               Logout

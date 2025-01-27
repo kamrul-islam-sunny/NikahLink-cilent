@@ -46,7 +46,7 @@ const NavbarX = () => {
       </li>
       {
         user && user.uid? <li className="text-lg  text-rose-600">
-        <Link to={'/dashboard/viewBioData'}>Dashboard</Link>
+        <Link to={'/dashboard'}>Dashboard</Link>
       </li> : <></>
       }
     </>

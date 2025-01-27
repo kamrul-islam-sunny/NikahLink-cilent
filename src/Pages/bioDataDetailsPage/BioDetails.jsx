@@ -1,28 +1,27 @@
-import { Card, Dropdown, Table } from "flowbite-react";
-import React from "react";
-import { Button } from "@headlessui/react";
+import { Button, Card, Table } from "flowbite-react";
 import { FaRegHeart } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-
+import useIsPremium from "../../Hooks/useIsPremium";
 
 const BioDetails = () => {
-    const {id} = useParams()
-    console.log(id)
-    const axiosPublic = useAxiosPublic()
-    const {data} = useQuery({
-        queryKey:['bioDataDetails'],
-        queryFn: async ()=> {
-            const res = await axiosPublic.get(`/bioData/${id}`)
-            console.log(res.data)
-            return res.data
-        }
-    })
-    console.log(data)
+  const { id } = useParams();
+  const [isPremium] = useIsPremium();
+  console.log(isPremium);
+  const axiosPublic = useAxiosPublic();
+  const { data } = useQuery({
+    queryKey: ["bioDataDetails"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/bioData/${id}`);
+      console.log(res.data);
+      return res.data;
+    },
+  });
+  console.log(data);
   return (
-    <div className="grid grid-cols-6">
-      <div className="col-span-2  border">
+    <div className="grid grid-cols-6 py-10">
+      <div className="col-span-2 ">
         <Card className="max-w-80">
           <div className="flex justify-end px-4 pt-4">
             <Button>
@@ -39,7 +38,7 @@ const BioDetails = () => {
               BioData Id
             </h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              id-1221
+              id-{data?.bioDataId}
             </span>
             <div className="mt-4 w-full">
               <Table>
@@ -52,7 +51,7 @@ const BioDetails = () => {
                     </Table.Cell>
 
                     <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                      sdfdsf
+                      {data?.perDivision}
                     </Table.Cell>
                   </Table.Row>
 
@@ -70,7 +69,7 @@ const BioDetails = () => {
                       Occupation
                     </Table.Cell>
                     <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                      sdfdsf
+                      {data?.occupation}
                     </Table.Cell>
                   </Table.Row>
                 </Table.Body>
@@ -80,9 +79,9 @@ const BioDetails = () => {
           </div>
         </Card>
       </div>
-      <div className="col-span-4 border">
+      <div className="col-span-4 ">
         {/* General */}
-        <div className="border mt-4 border-gray-300 mx-4 rounded-lg ">
+        <div className="border border-gray-300 mx-4 rounded-lg ">
           <h1 className="text-2xl text-center py-6">General information</h1>
           <Table hoverable>
             <Table.Body className="divide-y divide-gray-300 ">
@@ -93,7 +92,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                  fghgh
+                  {data?.gander}
                 </Table.Cell>
               </Table.Row>
 
@@ -102,7 +101,9 @@ const BioDetails = () => {
                   Birthdate
                 </Table.Cell>
 
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white"></Table.Cell>
+                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
+                  {new Date(data?.birth).toLocaleDateString()}
+                </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2 ">
@@ -110,7 +111,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  inch
+                  {data?.feet}.{data?.inch}inch
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -119,7 +120,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  fghgh
+                  {data?.race}
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -128,7 +129,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  fghgh
+                  {data?.weight}
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -137,7 +138,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  fghgfh
+                  {data?.weight}
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -146,7 +147,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  fghfg
+                  {data?.presentDivision}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -166,7 +167,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                  {name}
+                  {data?.name}
                 </Table.Cell>
               </Table.Row>
 
@@ -176,7 +177,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {age} */}
+                  {data?.age}
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -185,7 +186,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {occupation} */}
+                  {data?.occupation}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -205,7 +206,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                  {/* {fatherName} */}
+                  {data?.fatherName}
                 </Table.Cell>
               </Table.Row>
 
@@ -215,16 +216,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {matherName} */}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2 ">
-                  Occupation
-                </Table.Cell>
-
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {occupation} */}
+                  {data?.matherName}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -246,7 +238,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                  {/* {partnerAge} */}
+                  {data?.partnerAge}
                 </Table.Cell>
               </Table.Row>
 
@@ -256,7 +248,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {PartnerFeet}.{PartnerInch} in */}
+                  {data?.PartnerFeet}.{data?.PartnerInch} in
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -265,7 +257,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {partnerWeight} */}
+                  {data?.partnerWeight}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -273,34 +265,41 @@ const BioDetails = () => {
         </div>
 
         <br />
+        {isPremium ? (
+          <div className="border border-gray-300 mx-4 rounded-lg ">
+            <h1 className="text-2xl text-center py-6">Contact information</h1>
+            <Table hoverable>
+              <Table.Body className="divide-y divide-gray-300 ">
+                <Table.Row></Table.Row>
+                <Table.Row className="text-center dark:bg-gray-800 border-gray-200 dark:border-gray-700 ">
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2  font-medium text-gray-900 dark:text-white border-r-2 ">
+                    Contact Email
+                  </Table.Cell>
 
-        <div className="border border-gray-300 mx-4 rounded-lg ">
-          <h1 className="text-2xl text-center py-6">Contact information</h1>
-          <Table hoverable>
-            <Table.Body className="divide-y divide-gray-300 ">
-              <Table.Row></Table.Row>
-              <Table.Row className="text-center dark:bg-gray-800 border-gray-200 dark:border-gray-700 ">
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2  font-medium text-gray-900 dark:text-white border-r-2 ">
-                  Contact Email
-                </Table.Cell>
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
+                    {data?.email}
+                  </Table.Cell>
+                </Table.Row>
 
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white ">
-                  {/* {email} */}
-                </Table.Cell>
-              </Table.Row>
+                <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2 ">
+                    Phone Number
+                  </Table.Cell>
 
-              <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2 ">
-                  Phone Number
-                </Table.Cell>
-
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {/* {phoneNumber} */}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </div>
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
+                    {data?.phoneNumber}
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          </div>
+        ) : (
+          <Link to={`/checkout/${data?.bioDataId}`}>
+            <Button color="pink" className="ml-4">
+              contact request
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );

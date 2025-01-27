@@ -10,6 +10,8 @@ import ManageUser from "../Pages/Dasboard/AdminDasboard/manageUser/ManageUser";
 import ApprovedPremium from "../Pages/Dasboard/UserDashboard/ApprovedPremium/ApprovedPremium";
 import Home from "../Pages/Home/homepage/Home";
 import BioDetails from "../Pages/bioDataDetailsPage/BioDetails";
+import Payment from "../Pages/checkOutPage/Payment";
+import ApprovedConReq from "../Pages/Dasboard/AdminDasboard/approvedContactRequest/ApprovedConReq";
 
 
 
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:'/BioDataDetails/:id',
         element: <BioDetails></BioDetails>
+      },
+      {
+        path: '/checkout/:bioDataId',
+        element: <Payment></Payment>
       }
     ],
   },
@@ -42,12 +48,12 @@ const router = createBrowserRouter([
     children: [
       // normal user route
       {
-        path:'EditBioData',
-        element: <EditBioData></EditBioData>
-      },
-      {
         path:'ViewBioData',
         element: <ViewBioData></ViewBioData>
+      },
+      {
+        path:'EditBioData',
+        element: <EditBioData></EditBioData>
       },
      
 
@@ -63,6 +69,10 @@ const router = createBrowserRouter([
       {
         path:'approvedPremium',
         element: <ApprovedPremium></ApprovedPremium>
+      },
+      {
+        path:'approvedContactRequest',
+        element: <ApprovedConReq></ApprovedConReq>
       },
     ]
   }
