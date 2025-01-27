@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Spinner, Table } from "flowbite-react";
+import {  Spinner, Table } from "flowbite-react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAuth from "../../../../Hooks/useAuth";
 import { FaDeleteLeft } from "react-icons/fa6";
@@ -60,8 +60,18 @@ const MyContactReq = () => {
                   </Table.Cell>
                   <Table.Cell className="border">{req?.bioDataId}</Table.Cell>
                   <Table.Cell className="border">{req?.status}</Table.Cell>
-                  <Table.Cell>{req?.contactPhone}</Table.Cell>
-                  <Table.Cell>{req?.contactEmail}</Table.Cell>
+                  <Table.Cell>
+                    {
+                      req?.status === 'approve' ? req?.contactPhone : <span className="text-gray-500 italic">Approval is pending</span>
+                    
+                    }
+                    </Table.Cell>
+                  <Table.Cell>
+                  {
+                      req?.status === 'approve' ? req?.contactEmail : <span className="text-gray-500 italic">Approval is pending</span>
+                    
+                    }
+                  </Table.Cell>
                   <Table.Cell>
                     <button
                       onClick={() => handleDelete(req._id)}

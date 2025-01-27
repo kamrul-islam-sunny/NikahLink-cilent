@@ -25,7 +25,7 @@ const UserSideBar = () => {
               <Link to={"my-contact-request"}>My Contact Request</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiHeart}>
-              <Link to={"favourites"}>favourites BioData</Link>
+              <Link to={"my-favorite"}>favourites BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiLogout}>LogOut</Sidebar.Item>
           </Sidebar.ItemGroup>

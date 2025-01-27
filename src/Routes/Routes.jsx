@@ -13,6 +13,7 @@ import BioDetails from "../Pages/bioDataDetailsPage/BioDetails";
 import Payment from "../Pages/checkOutPage/Payment";
 import ApprovedConReq from "../Pages/Dasboard/AdminDasboard/approvedContactRequest/ApprovedConReq";
 import MyContactReq from "../Pages/Dasboard/UserDashboard/MyContactReq/MyContactReq";
+import MyFavorite from "../Pages/Dasboard/UserDashboard/Favorite/MyFavorite";
 
 
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path:'my-contact-request',
         element: <MyContactReq></MyContactReq>
+      },
+      {
+        path:'my-favorite',
+        element: <MyFavorite></MyFavorite>
       },
      
 
