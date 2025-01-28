@@ -36,10 +36,10 @@ const UserSideBar = () => {
               <Link to={"viewBioData"}  className={isActive("/dashboard/viewBioData") ? "text-blue-600" : ""}>View BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={FaEnvelopeOpen}>
-              <Link to={"my-contact-request"}>My Contact Request</Link>
+              <Link to={"my-contact-request"} className={isActive("/dashboard/my-contact-request") ? "text-blue-600" : ""} >My Contact Request</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiHeart}>
-              <Link to={"my-favorite"}>favourites BioData</Link>
+              <Link to={"my-favorite"} className={isActive("/dashboard/my-favorite") ? "text-blue-600" : ""}>favourites BioData</Link>
             </Sidebar.Item>
             <Sidebar.Item icon={HiLogout}>
               <Button onClick={handleLogOut}>LogOut</Button>

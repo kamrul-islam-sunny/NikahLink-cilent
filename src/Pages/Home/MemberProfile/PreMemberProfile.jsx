@@ -4,15 +4,15 @@ import useAllUser from "../../../Hooks/useAllUser";
 import {Label, Select, Spinner } from "flowbite-react";
 const PreMemberProfile = () => {
   const [users, , isPending] = useAllUser();
+  const [allBioData, setAllBioData] = useState([]);
 
   useEffect(() => {
-    setAllBioData(users);
+    setAllBioData(users.slice(0,8));
   }, [users]);
-  const [allBioData, setAllBioData] = useState([]);
   const [sortOrder, setSortOrder] = useState("ascending");
   const handleSorting = (e) => {
     setSortOrder(e.target.value);
-    const sorted = [...users].sort((a, b) => {
+    const sorted = [...allBioData].sort((a, b) => {
       if (sortOrder === "ascending") {
         return parseInt(b.age) - parseInt(a.age);
       }

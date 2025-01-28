@@ -322,7 +322,10 @@ const BioDetails = () => {
                   </Table.Cell>
 
                   <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                    <a href="">{data?.photoUrl}</a>
+                    {/*  */}
+                    <div className="w-72 py-2 px-4 overflow-auto ">
+                    <p>{data?.photoUrl}</p>
+                    </div>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>

@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     children: [
       // normal user route
       {
-        path: "ViewBioData",
+        path: "viewBioData",
         element: (
           <PrivateRoute>
             <ViewBioData></ViewBioData>

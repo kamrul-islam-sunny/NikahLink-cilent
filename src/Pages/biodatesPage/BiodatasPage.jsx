@@ -56,6 +56,8 @@ const BiodatasPage = () => {
     refetch();
   };
 
+
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
@@ -145,7 +147,10 @@ const BiodatasPage = () => {
 
         {/* Right Content - Biodata Cards */}
         <div className="lg:w-3/4 w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 ">
+            {
+              allBioData.length === 0 && <h1 className="text-2xl ">No data....</h1>
+            }
             {allBioData?.map((bioData) => (
               <div
                 key={bioData._id}
