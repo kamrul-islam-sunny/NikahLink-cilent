@@ -70,11 +70,7 @@ const NavbarX = () => {
           {user && user?.uid ? (
             <>
               <div className="flex gap-2 items-center">
-                <Button
-                  className="inline-block px-4 py-2 text-rose-500 font-semibold text-xs rounded-lg  hover:scale-105 transition transform duration-300"
-                >
-                  {user?.email}
-                </Button>
+               
                 <Button
                   className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition transform duration-300"
                   onClick={handleLogOut}
