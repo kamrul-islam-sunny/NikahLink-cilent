@@ -8,3 +8,6 @@ const useAxiosPublic = () => {
 };
 
 export default useAxiosPublic;
+
+// http://localhost:4500
+// http://localhost:4500/

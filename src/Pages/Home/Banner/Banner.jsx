@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const Banner = () => {
     return (
@@ -11,15 +11,15 @@ const Banner = () => {
           <h1 className="text-4xl lg:text-6xl font-extrabold mb-4 animate-fade-in">
             Find Your Perfect Match
           </h1>
-          <p className="text-lg lg:text-2xl mb-6 animate-fade-in text-gray-200">
+          <p className="text-lg lg:text-sn mb-6 animate-fade-in text-gray-200">
             Join our matrimony platform to discover meaningful connections and start your journey of love today.
           </p>
           <div className="flex gap-4 animate-slide-up">
             <button className="px-6 py-3 bg-pink-600 hover:bg-pink-700 rounded-full text-lg font-semibold shadow-lg transition duration-300">
-              Get Started
+              Find BioData
             </button>
             <button className="px-6 py-3 bg-white text-pink-600 hover:text-pink-700 border border-white rounded-full text-lg font-semibold shadow-lg transition duration-300">
-              Learn More
+              Edit BioData
             </button>
           </div>
         </div>

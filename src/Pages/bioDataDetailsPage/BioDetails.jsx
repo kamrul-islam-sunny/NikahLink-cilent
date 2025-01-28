@@ -6,7 +6,9 @@ import useIsPremium from "../../Hooks/useIsPremium";
 import useIsPayment from "../../Hooks/useIsPayment";
 import { MdVerified } from "react-icons/md";
 import FavoriteButton from "./FavoriteButton";
-import { useEffect, useState } from "react";
+import female from "../../assets/img/female.png";
+import male from "../../assets/img/male.png";
+import RelatedBioData from "./RelatedBioData";
 
 const BioDetails = () => {
   const { id } = useParams();
@@ -23,6 +25,7 @@ const BioDetails = () => {
   const isPayment = useIsPayment(data?.bioDataId);
 
   return (
+    <div className="">
     <div className="grid grid-cols-6 py-10">
       <div className="col-span-2 ">
         <Card className="max-w-80 relative">
@@ -30,13 +33,24 @@ const BioDetails = () => {
             <FavoriteButton data={data}></FavoriteButton>
           </div>
           <div className="flex flex-col items-center pb-10">
-            <img
-              className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
-                data?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
-              }  shadow-yellow-200`}
-              src="https://static.vecteezy.com/system/resources/previews/029/156/311/non_2x/male-muslim-avatar-icon-islam-arabic-man-in-traditional-muslim-hat-middle-eastern-human-profile-filled-style-pictogram-for-ramadan-eid-logo-illustration-design-on-white-background-eps-10-vector.jpg"
-              alt=""
-            />
+            {data?.gander === "Male" ? (
+              <img
+                className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
+                  data?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
+                }  shadow-yellow-200`}
+                src={male}
+                alt=""
+              />
+            ) : (
+              <img
+                className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
+                  data?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
+                }  shadow-yellow-200`}
+                src={female}
+                alt=""
+              />
+            )}
+
             <h5 className="mb-1 mt-2 text-xl font-medium text-gray-900 dark:text-white">
               BioData Id
             </h5>
@@ -81,7 +95,6 @@ const BioDetails = () => {
                 </Table.Body>
               </Table>
             </div>
-            <Button></Button>
           </div>
         </Card>
       </div>
@@ -307,6 +320,10 @@ const BioDetails = () => {
           </Link>
         )}
       </div>
+
+    </div>
+    <h1 className="text-2xl py-6 font-semibold ">Some {data?.gander} BioData</h1>
+       <RelatedBioData gander={data?.gander}></RelatedBioData>
     </div>
   );
 };

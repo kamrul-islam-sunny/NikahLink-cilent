@@ -1,7 +1,9 @@
-import { Button, Card } from "flowbite-react";
+import { Card } from "flowbite-react";
 import { Table } from "flowbite-react";
-import femaleImg from "../../../src/assets/img/female.png";
+import female from "../../../src/assets/img/female.png";
+import male from "../../../src/assets/img/male.png";
 import { Link } from "react-router-dom";
+import { Button } from "@headlessui/react";
 
 const BioData = ({ bioData }) => {
   return (
@@ -9,14 +11,18 @@ const BioData = ({ bioData }) => {
       <Card className="max-w-xs m-0 border-2 border-rose-500 border-opacity-15">
         {bioData?.gander === "Male" ? (
           <img
-            className="rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto"
-            src="https://static.vecteezy.com/system/resources/previews/029/156/311/non_2x/male-muslim-avatar-icon-islam-arabic-man-in-traditional-muslim-hat-middle-eastern-human-profile-filled-style-pictogram-for-ramadan-eid-logo-illustration-design-on-white-background-eps-10-vector.jpg"
+            className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
+              bioData?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
+            }  shadow-yellow-200`}
+            src={male}
             alt=""
           />
         ) : (
           <img
-            className="rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto"
-            src="https://media.istockphoto.com/id/1413233180/vector/beautiful-blank-face-template-portrait-of-a-pretty-muslim-woman-faceless-female-face-in.jpg?s=170667a&w=0&k=20&c=5_7JKqtiNGf1jDecMzWy8nauDt6LVjTOw4YgtWg3m6g="
+            className={`rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto ${
+              bioData?.type ? "shadow-[0_0_15px_5px_rgba(252,211,77,0.5)]" : ""
+            }  shadow-yellow-200`}
+            src={female}
             alt=""
           />
         )}
@@ -68,7 +74,9 @@ const BioData = ({ bioData }) => {
           </Table>
         </div>
         <Link to={`/BioDataDetails/${bioData?._id}`}>
-          <Button className="text-center">View Profile</Button>
+          <Button className="text-center inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition transform duration-300">
+            View Profile
+          </Button>
         </Link>
       </Card>
       <br />
