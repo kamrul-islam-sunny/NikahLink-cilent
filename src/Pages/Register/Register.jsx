@@ -22,7 +22,6 @@ const Register = () => {
       .then((result) => {
         updateUserProfile(data.name, data.photoUrl)
         .then(() => {
-            console.log(result.user);
             const userInfo = {
               name: data.name,
               email: data.email,

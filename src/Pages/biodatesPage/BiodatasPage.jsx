@@ -1,7 +1,61 @@
-
-import { Card, Checkbox, Button, TextInput } from "flowbite-react";
+import { useQuery } from "@tanstack/react-query";
+import { Card, Button, TextInput, Label, Select } from "flowbite-react";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useEffect, useState } from "react";
+import useAllUser from "../../Hooks/useAllUser";
+import BioData from "../../components/BioDataCart/BioData";
+import { FaRedo } from "react-icons/fa";
 
 const BiodatasPage = () => {
+  const axiosPublic = useAxiosPublic();
+  const [allBioData, setAllBioData] = useState([]);
+  const [users] = useAllUser();
+  const [filterParams, setFilterParams] = useState(null);
+  const [isReset, setReset] = useState(false)
+  const { data: filterBioData, refetch } = useQuery({
+    queryKey: [
+      "bioDataFilter",
+      filterParams?.ageMax,
+      filterParams?.gander,
+      filterParams?.ageMin,
+      filterParams?.perDivision,
+    ],
+    queryFn: async () => {
+      const res = await axiosPublic.get(
+        `/bioData-filter?gander=${filterParams?.gander}&maxAge=${filterParams?.ageMax}&minAge=${filterParams.ageMin}&perDivision=${filterParams?.perDivision}`
+      );
+      return res.data;
+    },
+  });
+  const { register, handleSubmit, reset } = useForm();
+  useEffect(() => {
+    if (filterBioData) {
+      setAllBioData(filterBioData);
+    } else {
+      setAllBioData(users);
+    }
+  }, [users, filterBioData]);
+
+  const handleReset = () => {
+    setReset(true);
+    if(isReset)
+    {
+        setAllBioData(users)
+        refetch();
+    }
+  }
+
+  const onSubmit = (data) => {
+    setFilterParams({
+      gander: data.gander,
+      ageMax: data.ageMax,
+      ageMin: data.ageMin,
+      perDivision: data.perDivision,
+    });
+    refetch();
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
@@ -12,91 +66,94 @@ const BiodatasPage = () => {
         {/* Left Sidebar - Filters */}
         <div className="lg:w-1/4 w-full">
           <Card className="shadow-md">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Filters</h2>
-            <div className="space-y-4">
-              {/* Search */}
-              <TextInput
-                id="search"
-                type="text"
-                placeholder="Search by name"
-                className="mb-4"
-              />
-
-              {/* Gender Filter */}
-              <div>
-                <h3 className="font-medium text-gray-600 mb-2">Gender</h3>
-                <Checkbox id="male" name="gender" value="male">
-                  Male
-                </Checkbox>
-                <Checkbox id="female" name="gender" value="female">
-                  Female
-                </Checkbox>
-              </div>
-
-              {/* Age Filter */}
-              <div>
-                <h3 className="font-medium text-gray-600 mb-2">Age Range</h3>
-                <div className="flex gap-2">
-                  <TextInput id="min-age" type="number" placeholder="Min" />
-                  <TextInput id="max-age" type="number" placeholder="Max" />
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <h2 className="text-xl font-semibold text-gray-700 mb-4">
+                Filters
+              </h2>
+              <div className="space-y-4">
+                {/* Gender Filter */}
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="countries" value="Select Gender" />
+                  </div>
+                  <Select {...register("gander")} id="countries">
+                    <option value={""} disabled selected>
+                      Select a Gender
+                    </option>
+                    <option value={"Male"}>Male</option>
+                    <option value={"Female"}>Female</option>
+                  </Select>
                 </div>
-              </div>
 
-              {/* Religion Filter */}
-              <div>
-                <h3 className="font-medium text-gray-600 mb-2">Religion</h3>
-                <Checkbox id="islam" name="religion" value="islam">
-                  Islam
-                </Checkbox>
-                <Checkbox id="hinduism" name="religion" value="hinduism">
-                  Hinduism
-                </Checkbox>
-              </div>
+                {/* Age Filter */}
+                <div>
+                  <h3 className="font-medium text-gray-600 mb-2">Age Range</h3>
+                  <div className="flex gap-2">
+                    <TextInput
+                      {...register("ageMax")}
+                      id="min-age"
+                      type="number"
+                      placeholder="Min"
+                    />
+                    <TextInput
+                      {...register("ageMin")}
+                      id="max-age"
+                      type="number"
+                      placeholder="Max"
+                    />
+                  </div>
+                </div>
 
-              {/* Button */}
-              <Button className="mt-4 w-full">Apply Filters</Button>
-            </div>
+                {/* Religion Filter */}
+                <div>
+                  <h3 className="font-medium text-gray-600 mb-2">Division</h3>
+                  <Select
+                    id="division"
+                    {...register("perDivision")}
+                    className="w-full"
+                  >
+                    <option value={""} disabled selected>
+                      Select a division
+                    </option>
+                    {[
+                      "Dhaka",
+                      "Chattagra",
+                      "Rangpur",
+                      "Barisal",
+                      "Khulna",
+                      "Mymensingh",
+                      "Sylhet",
+                    ].map((division) => (
+                      <option key={division} value={division}>
+                        {division}
+                      </option>
+                    ))}
+                  </Select>
+                </div>
+                {/* Button */}
+                <Button type="submit" className="mt-4 w-full">
+                  Apply Filters
+                </Button>
+                <Button onClick={handleReset} color="dark">
+                  <FaRedo  className="mr-2 h-5 w-5" />
+                  Reset
+                </Button>
+              </div>
+            </form>
           </Card>
         </div>
 
         {/* Right Content - Biodata Cards */}
         <div className="lg:w-3/4 w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Example Biodata Card */}
-            <Card className="shadow-md">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-pink-500 rounded-full h-16 w-16 flex items-center justify-center text-white font-bold text-xl">
-                  O
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Olivia Smith</h3>
-                  <p className="text-sm text-gray-500">Age: 28</p>
-                  <p className="text-sm text-gray-500">Religion: Christianity</p>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 border">
+            {allBioData?.map((bioData) => (
+              <div
+                key={bioData._id}
+                className=" dark:bg-gray-800 p-4 rounded-lg transition-transform transform hover:scale-105"
+              >
+                <BioData bioData={bioData} />
               </div>
-              <Button size="sm" color="info" className="w-full">
-                View Biodata
-              </Button>
-            </Card>
-
-            {/* Duplicate this card to represent more biodata */}
-            <Card className="shadow-md">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-blue-500 rounded-full h-16 w-16 flex items-center justify-center text-white font-bold text-xl">
-                  W
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">William Johnson</h3>
-                  <p className="text-sm text-gray-500">Age: 30</p>
-                  <p className="text-sm text-gray-500">Religion: Islam</p>
-                </div>
-              </div>
-              <Button size="sm" color="info" className="w-full">
-                View Biodata
-              </Button>
-            </Card>
-
-            {/* Add more cards dynamically */}
+            ))}
           </div>
         </div>
       </div>

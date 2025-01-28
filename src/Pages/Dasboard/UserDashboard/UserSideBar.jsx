@@ -2,10 +2,21 @@ import { Sidebar } from "flowbite-react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { HiEye, HiHeart, HiLogout, HiPencilAlt } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import { Button } from "@headlessui/react";
 
 const UserSideBar = () => {
+  const {userLogOut } = useAuth();
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {
+        toast.success("logout successful ");
+      })
+      .catch(() => {
+      });
+  };
   const location = useLocation(); 
-  console.log(location)
   const isActive = (path) => location.pathname === path;
   return (
     <div>
@@ -27,7 +38,9 @@ const UserSideBar = () => {
             <Sidebar.Item icon={HiHeart}>
               <Link to={"my-favorite"}>favourites BioData</Link>
             </Sidebar.Item>
-            <Sidebar.Item icon={HiLogout}>LogOut</Sidebar.Item>
+            <Sidebar.Item icon={HiLogout}>
+              <Button onClick={handleLogOut}>LogOut</Button>
+              </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>

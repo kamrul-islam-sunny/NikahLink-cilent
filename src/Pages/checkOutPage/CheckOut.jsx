@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { Label, TextInput } from "flowbite-react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import useSingleBioData from "../../Hooks/useSingleBioData";
 
@@ -18,11 +18,12 @@ const CheckOut = () => {
   const { user } = useAuth();
   const [clientSecret, setClientSecret] = useState("");
   const totalPrice = 5;
+  const navigate = useNavigate();
   useEffect(() => {
     axiosSecure
       .post("/create-payment-intent", { price: totalPrice })
       .then((res) => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosSecure]);
@@ -44,10 +45,9 @@ const CheckOut = () => {
     });
 
     if (error) {
-      console.log("[error]", error);
-      setError(error.message);
+      // setError(error.message);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
       setError("");
     }
 
@@ -82,10 +82,9 @@ const CheckOut = () => {
         };
 
         const res = await axiosSecure.post("/payments", payment);
-        console.log(res.data);
         if (res.data?.insertedId) {
           toast.success("payment successfully.");
-          // navigate('/dashboard/paymentHistory')
+          navigate('/dashboard/my-contact-request')
         }
       }
     }

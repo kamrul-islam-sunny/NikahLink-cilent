@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
+
 const ApprovedConReq = () => {
   const axiosPublic = useAxiosPublic();
+
   const { data: payments, refetch } = useQuery({
     queryKey: ["contactReq"],
     queryFn: async () => {
@@ -12,12 +14,10 @@ const ApprovedConReq = () => {
     },
   });
 
-  console.log(payments)
 
   const handleApproved = (id) =>{
     axiosPublic.patch(`/contact-request-approver/${id}`)
-    .then((res) => {
-      console.log(res.data);
+    .then(() => {
       refetch();
     });
   }

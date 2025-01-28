@@ -7,7 +7,6 @@ const ApprovedPremium = () => {
   const axiosSecure = useAxiosSecure()
   const handlePremium = (id) => {
     axiosSecure.patch(`/users/premium/${id}`).then((res) => {
-      console.log(res.data);
       refetch();
     });
   };

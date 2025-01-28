@@ -27,7 +27,6 @@ const MyFavorite = () => {
 
     const handleDelete = (id) => {
       axiosPublic.delete(`/delete-favorite/${id}`).then((res) => {
-        console.log(res.data);
         refetch();
       });
     };

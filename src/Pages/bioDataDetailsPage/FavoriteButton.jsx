@@ -24,7 +24,7 @@ const FavoriteButton = ({data}) => {
         }
         axiosPublic.post('/favorite-bioData', favoriteData)
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           setFavorite(true)
         })
       }

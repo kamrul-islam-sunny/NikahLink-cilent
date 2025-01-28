@@ -29,14 +29,13 @@ const MyContactReq = () => {
   const handleDelete = (id) => {
     axiosPublic.patch(`/delete-request/${id}`)
     .then((res) => {
-      console.log(res.data);
       refetch();
     });
   };
 
   return (
     <div className="px-4">
-      <h1>Manage user</h1>
+      <h1 className="text-center text-3xl font-bold py-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500">My Contact Request</h1>
       <div className="overflow-x-auto">
         <Table hoverable>
           <Table.Head>

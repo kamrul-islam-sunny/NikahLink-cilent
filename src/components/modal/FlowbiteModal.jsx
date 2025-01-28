@@ -16,8 +16,8 @@ const FlowbiteModal = ({ isOpen, setIsOpen }) => {
 
   const handleReqPremium = () =>{
     axiosPublic.patch(`/user/request_premium/${user?.email}`)
-    .then(res => {
-      console.log(res.data)
+    .then((res) => {
+      // console.log(res.data)
       setIsOpen(false)
     })
   }

@@ -21,7 +21,7 @@ const Dashboard = () => {
       <div className="w-1/4">
         {isAdmin ? <AdminSideBar></AdminSideBar> : <UserSideBar></UserSideBar>}
       </div>
-      <div className="flex-1 my-2 py-4 bg-gray-200 rounded-lg">
+      <div className="flex-1 my-2 py-4 bg-gradient-to-b from-rose-50 to-pink-100 rounded-lg">
         <Outlet></Outlet>
       </div>
     </section>

@@ -13,30 +13,24 @@ const NavbarX = () => {
   const [userName, setUserName] = useState('')
   useEffect(()=>{
     setUserName(user?.displayName)
-    console.log('setKour',user?.displayName)
   },[user])
 
-
-
   const handleLogOut = () => {
-    console.log("signout");
     userLogOut()
-      .then((result) => {
-        console.log(result);
-        toast("logout successful ");
+      .then(() => {
+        toast.success("logout successful ");
       })
-      .catch((err) => {
-        console.log(err.message);
+      .catch(() => {
       });
   };
 
   const links = (
     <>
       <li className="text-lg  text-rose-600">
-        <Link>Home</Link>
+        <Link to={'/'}>Home</Link>
       </li>
       <li className="text-lg  text-rose-600">
-        <Link>Biodatas</Link>
+        <Link to={'baiDataPage'}>Biodatas</Link>
       </li>
       <li className="text-lg  text-rose-600">
         <Link>About Us</Link>
@@ -53,8 +47,8 @@ const NavbarX = () => {
   );
 
   return (
-    <div>
-      <Navbar fluid rounded>
+    <div className="">
+      <Navbar className="bg-white/30 backdrop-blur-sm rounded ">
         <Navbar.Brand href="https://flowbite-react.com">
           {/* <img
             src="/favicon.svg"

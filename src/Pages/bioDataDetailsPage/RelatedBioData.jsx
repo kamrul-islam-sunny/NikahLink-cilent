@@ -10,7 +10,6 @@ const RelatedBioData = ({gander}) => {
         const result = users.filter((bioData)=> bioData.gander === gander)
         setRelatedBioData(result.slice(0,3))
     }, [users, gander])
-    console.log(users, gander, relatedBioData)
     return (
         <div className="grid grid-cols-3 ">
             {

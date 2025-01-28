@@ -9,7 +9,7 @@ const useIsPayment = (id) => {
         queryKey: ["bioDataDetails", user?.email],
         queryFn: async () => {
           const res = await axiosPublic.get(`/check-payment?bioDataId=${id}&userEmail=${user?.email}`);
-          console.log(res.data);
+          // console.log(res.data);
           return res.data.isPaid; 
         },
       });

@@ -5,30 +5,19 @@ import useAllUser from "../../../../Hooks/useAllUser";
 
 const ManageUser = () => {
   const [users, refetch] = useAllUser()
-  // console.log(users);
   const axiosSecure = useAxiosSecure();
 
   const handleAdmin = (id) => {
     axiosSecure.patch(`/users/admin/${id}`).then((res) => {
-      console.log(res.data);
       refetch();
     });
   };
 
   const handlePremium = (id) => {
     axiosSecure.patch(`/users/premium/${id}`).then((res) => {
-      console.log(res.data);
       refetch();
     });
   };
-
-  // const handleDelete = (id) =>{
-  //   axiosPublic.delete(`/userDelete/${id}`)
-  //   .then(res =>{
-  //     console.log(res)
-  //     refetch();
-  //   })
-  // }
 
   return (
     <div className="px-4">

@@ -18,39 +18,34 @@ const EditBioData = () => {
     "Sylhet",
   ];
 
-  console.log(user);
+ 
 
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit, setValue } = useForm();
   useEffect(() => {
     setValue("email", user?.email || "");
   }, [user, setValue]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-
-    console.log(data);
-    if(!data.birth)
-    {
-      toast.error('Date of birth not filled up.')
+    if (!data.birth) {
+      toast.error("Date of birth not filled up.");
       return;
     }
     axiosPublic.patch("/bioData", data).then((res) => {
-      console.log(res.data);
-      if(res.data.modifiedCount)
-      {
-        toast.success('You bioData Successful Updated.')
-        navigate('/dashboard/viewBioData')
+  
+      if (res.data.modifiedCount) {
+        toast.success("You bioData Successful Updated.");
+        navigate("/dashboard/viewBioData");
       }
     });
-
   };
- 
-  const data = useSingleBioData() 
+
+  const data = useSingleBioData();
 
   return (
     <div className="p-4">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>{user?.email}</h1>
+      <h1 className="text-center text-5xl font-bold py-8">Edit BioData</h1>
         <div className="space-y-4">
           <div className="flex gap-2">
             {/* Name */}
@@ -72,7 +67,11 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Biodata Type
               </label>
-              <Select defaultValue={data?.gander} required {...register("gander")}>
+              <Select
+                defaultValue={data?.gander}
+                required
+                {...register("gander")}
+              >
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -87,7 +86,7 @@ const EditBioData = () => {
                 Profile Image Link
               </label>
               <TextInput
-              defaultValue={data?.photoUrl}
+                defaultValue={data?.photoUrl}
                 {...register("photoUrl")}
                 type="text"
                 placeholder="Paste your image link"
@@ -184,7 +183,11 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Weight
               </label>
-              <Select defaultValue={data?.weight} required {...register("weight")}>
+              <Select
+                defaultValue={data?.weight}
+                required
+                {...register("weight")}
+              >
                 <option value="">Select Weight</option>
                 <option value="50kg">50kg</option>
                 <option value="60kg">60kg</option>
@@ -197,7 +200,11 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Occupation
               </label>
-              <Select defaultValue={data?.occupation} required {...register("occupation")}>
+              <Select
+                defaultValue={data?.occupation}
+                required
+                {...register("occupation")}
+              >
                 <option value="">Select Occupation</option>
                 <option value="Engineer">Engineer</option>
                 <option value="Doctor">Doctor</option>
@@ -230,7 +237,7 @@ const EditBioData = () => {
                 Mother`s Name
               </label>
               <TextInput
-               defaultValue={data?.matherName}
+                defaultValue={data?.matherName}
                 {...register("matherName")}
                 type="text"
                 placeholder="Mother's name"
@@ -248,7 +255,7 @@ const EditBioData = () => {
               <Select required>
                 {divisions.map((division, index) => (
                   <option
-                  defaultValue={data?.perDivision}
+                    defaultValue={data?.perDivision}
                     {...register("perDivision")}
                     required
                     key={index}
@@ -265,7 +272,11 @@ const EditBioData = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Present Division
               </label>
-              <Select defaultValue={data?.presentDivision} required {...register("presentDivision")}>
+              <Select
+                defaultValue={data?.presentDivision}
+                required
+                {...register("presentDivision")}
+              >
                 {divisions.map((division, index) => (
                   <option key={index} value={division}>
                     {division}
@@ -335,7 +346,11 @@ const EditBioData = () => {
             <label className="block text-sm font-medium text-gray-700">
               Expected Partner Weight
             </label>
-            <Select  defaultValue={data?.partnerWeight} required {...register("partnerWeight")}>
+            <Select
+              defaultValue={data?.partnerWeight}
+              required
+              {...register("partnerWeight")}
+            >
               <option value="">Select Weight</option>
               <option value="50kg">50kg</option>
               <option value="60kg">60kg</option>
@@ -373,7 +388,7 @@ const EditBioData = () => {
           {/* Save Changes Button */}
           <div>
             <Button type="submit" className="w-full mt-4">
-              Save Changes
+              Save And Publish Now
             </Button>
           </div>
         </div>
