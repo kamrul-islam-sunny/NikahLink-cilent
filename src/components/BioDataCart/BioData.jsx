@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const BioData = ({ bioData }) => {
   return (
     <div>
-      <Card className="max-w-xs m-0 border bg-fuchsia-50 border-rose-300">
+      <Card className="max-w-xs m-0 border-2 border-rose-500 border-opacity-15">
         {bioData?.gander === "Male" ? (
           <img
             className="rounded-full ring-2 ring-rose-600 ring-opacity-20 size-36 mx-auto"
@@ -36,9 +36,9 @@ const BioData = ({ bioData }) => {
             </p>
           </div>
           <Table className="">
-            <Table.Body className="divide-y divide-rose-300">
-              <Table.Row className="bg-rose-400  dark:bg-gray-800 bor border-gray-200 dark:border-gray-700 ">
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2  font-medium text-gray-900 dark:text-white border-r-2">
+            <Table.Body className="divide-y divide-rose-200">
+              <Table.Row className="bg-rose-100  dark:bg-gray-800  dark:border-gray-700 ">
+                <Table.Cell className="whitespace-nowrap w-1/2 py-2  font-medium text-gray-900 dark:text-white border-r-2 border-rose-200">
                   Division
                 </Table.Cell>
 
@@ -47,8 +47,8 @@ const BioData = ({ bioData }) => {
                 </Table.Cell>
               </Table.Row>
 
-              <Table.Row className="bg-rose-400 dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2">
+              <Table.Row className="bg-rose-100 dark:border-gray-700 dark:bg-gray-800">
+                <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-rose-200 border-r-2">
                   Age
                 </Table.Cell>
 
@@ -56,8 +56,8 @@ const BioData = ({ bioData }) => {
                   {bioData?.age}
                 </Table.Cell>
               </Table.Row>
-              <Table.Row className="bg-rose-400  dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white w-1/2 py-2 border-r-2">
+              <Table.Row className="bg-rose-100  dark:border-gray-700 dark:bg-gray-800">
+                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white w-1/2 py-2 border-rose-200 border-r-2">
                   Occupation
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
