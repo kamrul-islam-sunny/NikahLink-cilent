@@ -71,7 +71,7 @@ const NavbarX = () => {
             <>
               <div className="flex gap-2 items-center">
                 <Button
-                  className="inline-block px-4 py-2 text-rose-500 font-semibold rounded-lg  hover:scale-105 transition transform duration-300"
+                  className="inline-block px-4 py-2 text-rose-500 font-semibold sm:text-xs rounded-lg  hover:scale-105 transition transform duration-300"
                 >
                   {user?.email}
                 </Button>
