@@ -12,12 +12,16 @@ import toast from "react-hot-toast";
 const FlowbiteModal = ({ isOpen, setIsOpen }) => {
   const axiosPublic = useAxiosPublic()
   const {user} = useAuth()
-
-
   const handleReqPremium = () =>{
     axiosPublic.patch(`/user/request_premium/${user?.email}`)
     .then((res) => {
       // console.log(res.data)
+      if(res.data.modifiedCount > 0)
+      {
+        toast.success('Request sent to admin.Please Wait')
+      }else{
+        toast.error('Request sent to admin.Please Wait')
+      }
       setIsOpen(false)
     })
   }

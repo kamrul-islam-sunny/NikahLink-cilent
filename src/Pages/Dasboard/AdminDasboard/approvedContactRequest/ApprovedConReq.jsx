@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Button, Table } from "flowbite-react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 
 const ApprovedConReq = () => {
@@ -17,13 +18,17 @@ const ApprovedConReq = () => {
 
   const handleApproved = (id) =>{
     axiosPublic.patch(`/contact-request-approver/${id}`)
-    .then(() => {
+    .then((res) => {
+      if(res.data.modifiedCount > 0)
+        {
+          toast.success('User Contact request Approved.')
+        }
       refetch();
     });
   }
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Contact Requests</h1>
+      <h1 className="text-center text-3xl font-bold py-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500">Contact Requests</h1>
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell>Name</Table.HeadCell>

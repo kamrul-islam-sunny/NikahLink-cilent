@@ -1,19 +1,24 @@
 import { Button, Table } from "flowbite-react";
 import useAllUser from "../../../../Hooks/useAllUser";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ApprovedPremium = () => {
   const [users, refetch] = useAllUser();
   const axiosSecure = useAxiosSecure()
   const handlePremium = (id) => {
     axiosSecure.patch(`/users/premium/${id}`).then((res) => {
+      if(res.data.modifiedCount > 0)
+        {
+          toast.success('Successful user has become Premium.')
+        }
       refetch();
     });
   };
 
   return (
     <div className="px-4">
-      <h1>Premium Approval Requests</h1>
+      <h1 className="text-center text-3xl font-bold py-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500">Premium Approval Requests</h1>
       <div className="overflow-x-auto">
         <Table hoverable>
           <Table.Head >

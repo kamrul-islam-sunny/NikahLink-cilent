@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:4500'
+    baseURL: 'https://matrimony-server-side-zeta.vercel.app'
 })
 const useAxiosPublic = () => {
     return axiosPublic;
@@ -9,5 +9,3 @@ const useAxiosPublic = () => {
 
 export default useAxiosPublic;
 
-// http://localhost:4500
-// http://localhost:4500/

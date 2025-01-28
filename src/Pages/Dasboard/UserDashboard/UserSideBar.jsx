@@ -1,13 +1,15 @@
 import { Sidebar } from "flowbite-react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { HiEye, HiHeart, HiLogout, HiPencilAlt } from "react-icons/hi";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Button } from "@headlessui/react";
 
+
 const UserSideBar = () => {
-  const {userLogOut } = useAuth();
+  const {userLogOut} = useAuth();
+  
   const handleLogOut = () => {
     userLogOut()
       .then(() => {
@@ -18,11 +20,12 @@ const UserSideBar = () => {
   };
   const location = useLocation(); 
   const isActive = (path) => location.pathname === path;
+  
   return (
     <div>
       <Sidebar aria-label="Sidebar with logo branding example">
-        <Sidebar.Logo href="/" img="/favicon.svg" imgAlt="Flowbite logo">
-          Flowbite
+        <Sidebar.Logo href="/">
+        <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500">NikahLink </h1>
         </Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>

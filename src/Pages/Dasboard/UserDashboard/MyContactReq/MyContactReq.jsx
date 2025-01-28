@@ -3,6 +3,7 @@ import {  Spinner, Table } from "flowbite-react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAuth from "../../../../Hooks/useAuth";
 import { FaDeleteLeft } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const MyContactReq = () => {
   const axiosPublic = useAxiosPublic();
@@ -29,6 +30,10 @@ const MyContactReq = () => {
   const handleDelete = (id) => {
     axiosPublic.patch(`/delete-request/${id}`)
     .then((res) => {
+      if(res.data.modifiedCount > 0)
+        {
+          toast.success('Deleted Successfully.')
+        }
       refetch();
     });
   };

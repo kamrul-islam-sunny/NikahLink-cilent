@@ -9,7 +9,7 @@ const GeneralInformation = () => {
     inch,
     perDivision,
     presentDivision,
-    race,
+    skinColor,
     weight,
     birth,
   } = singleData;
@@ -56,7 +56,7 @@ const GeneralInformation = () => {
             </Table.Cell>
 
             <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-              {race}
+              {skinColor}
             </Table.Cell>
           </Table.Row>
           <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">

@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:4500'
+    baseURL: 'https://matrimony-server-side-zeta.vercel.app'
 })
 const useAxiosSecure = () => {
     return axiosSecure;

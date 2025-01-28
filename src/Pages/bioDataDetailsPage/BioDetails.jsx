@@ -9,10 +9,12 @@ import FavoriteButton from "./FavoriteButton";
 import female from "../../assets/img/female.png";
 import male from "../../assets/img/male.png";
 import RelatedBioData from "./RelatedBioData";
+import { useEffect, useState } from "react";
 
 const BioDetails = () => {
   const { id } = useParams();
   const [isPremium] = useIsPremium();
+
   const axiosPublic = useAxiosPublic();
   const { data } = useQuery({
     queryKey: ["bioDataDetails"],
@@ -22,8 +24,12 @@ const BioDetails = () => {
     },
   });
 
+
   const isPayment = useIsPayment(data?.bioDataId);
 
+
+
+  console.log(isPayment)
   return (
     <div className="">
     <div className="grid grid-cols-6 py-10">
@@ -139,7 +145,7 @@ const BioDetails = () => {
                 </Table.Cell>
 
                 <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
-                  {data?.race}
+                  {data?.skinColor}
                 </Table.Cell>
               </Table.Row>
               <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
@@ -284,7 +290,7 @@ const BioDetails = () => {
         </div>
 
         <br />
-        {isPremium ? (
+        {isPremium || isPayment ? (
           <div className="border border-gray-300 mx-4 rounded-lg ">
             <h1 className="text-2xl text-center py-6">Contact information</h1>
             <Table hoverable>
@@ -307,6 +313,16 @@ const BioDetails = () => {
 
                   <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
                     {data?.phoneNumber}
+                  </Table.Cell>
+                </Table.Row>
+
+                <Table.Row className=" text-center  dark:border-gray-700 dark:bg-gray-800">
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white border-r-2 ">
+                    Photo Url
+                  </Table.Cell>
+
+                  <Table.Cell className="whitespace-nowrap w-1/2 py-2 font-medium text-gray-900 dark:text-white">
+                    <a href="">{data?.photoUrl}</a>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>

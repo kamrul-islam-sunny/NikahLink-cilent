@@ -2,8 +2,25 @@ import CountUp from "react-countup";
 import female from "../../../assets/img/female.png";
 import male from "../../../assets/img/male.png";
 import wedding from "../../../assets/img/wedding-rings.png";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const SuccessCounter = () => {
+    const axiosPublic = useAxiosPublic()
+    // const [maleCount, setMaleCount] = useState(0)
+    // const [femaleCount, setFemaleCount] = useState(0)
+    const {data} = useQuery({
+        queryKey: ['maleCount', 'femaleCount'],
+        queryFn: async ()=> {
+            const res = await axiosPublic.get('/BioDataCount')
+            return res.data
+        }
+    })
+
+
+    // console.log(data?.maleCount, data?.femaleCount)
+
     return (
         <div className="bg-gradient-to-b from-pink-100 to-rose-50 py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -15,7 +32,7 @@ const SuccessCounter = () => {
         </p>
 
         {/* Counter Section with Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Girls BioData Counter */}
           <div className="bg-white p-6 shadow-lg rounded-2xl flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-pink-100">
             <div className="bg-pink-500 text-white rounded-full h-20 w-20 flex items-center justify-center text-2xl font-bold mb-4 ring-offset-4 ring-2 ring-pink-300">
@@ -25,7 +42,7 @@ const SuccessCounter = () => {
               Girls BioData
             </h3>
             <p className="text-3xl font-bold text-pink-500">
-              <CountUp start={0} end={1200} duration={2.5} />
+              00<CountUp start={0} end={data?.femaleCount} duration={2.5} />
             </p>
           </div>
 
@@ -38,7 +55,7 @@ const SuccessCounter = () => {
               Boys BioData
             </h3>
             <p className="text-3xl font-bold text-pink-500">
-              <CountUp start={0} end={1500} duration={2.5} />
+              00<CountUp start={0} end={data?.maleCount} duration={2.5} />
             </p>
           </div>
 

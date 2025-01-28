@@ -108,15 +108,16 @@ const EditBioData = () => {
           </div>
 
           <div className="flex gap-2">
-            {/* Race */}
+            {/* Skin Color */}
             <div className="w-full">
               <label className="block text-sm font-medium text-gray-700">
-                Race
+                Skin Color
               </label>
-              <Select defaultValue={data?.race} required {...register("race")}>
-                <option value="">Select Race</option>
+              <Select defaultValue={data?.skinColor} required {...register("skinColor")}>
+                <option value="">Select Skin Color</option>
                 <option value="Fair">Fair</option>
                 <option value="Medium">Medium</option>
+                <option value="Brown">Brown</option>
                 <option value="Dark">Dark</option>
               </Select>
             </div>
@@ -189,9 +190,18 @@ const EditBioData = () => {
                 {...register("weight")}
               >
                 <option value="">Select Weight</option>
+                <option value="30kg">30kg</option>
+                <option value="35kg">35kg</option>
+                <option value="40kg">40kg</option>
+                <option value="45kg">45kg</option>
                 <option value="50kg">50kg</option>
+                <option value="55kg">55kg</option>
                 <option value="60kg">60kg</option>
+                <option value="65kg">65kg</option>
                 <option value="70kg">70kg</option>
+                <option value="75kg">75kg</option>
+                <option value="80kg">80kg</option>
+                <option value="85kg">85kg</option>
               </Select>
             </div>
 
@@ -352,9 +362,18 @@ const EditBioData = () => {
               {...register("partnerWeight")}
             >
               <option value="">Select Weight</option>
-              <option value="50kg">50kg</option>
-              <option value="60kg">60kg</option>
-              <option value="70kg">70kg</option>
+              <option value="30kg">30kg</option>
+                <option value="35kg">35kg</option>
+                <option value="40kg">40kg</option>
+                <option value="45kg">45kg</option>
+                <option value="50kg">50kg</option>
+                <option value="55kg">55kg</option>
+                <option value="60kg">60kg</option>
+                <option value="65kg">65kg</option>
+                <option value="70kg">70kg</option>
+                <option value="75kg">75kg</option>
+                <option value="80kg">80kg</option>
+                <option value="85kg">85kg</option>
             </Select>
           </div>
 
