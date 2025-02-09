@@ -1,28 +1,30 @@
-# Metro Money - Matrimony Platform
+# 📌 NikahLink - Matrimony Platform  
 
-Welcome to **NikahLink**, a modern and easy-to-use matrimony platform designed to connect individuals looking for life partners. Our platform offers a seamless experience with a range of features designed to ensure security, user satisfaction, and ease of use.
+Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed to connect individuals looking for life partners. Our platform ensures a seamless and secure matchmaking experience with premium features, responsive design, and robust security measures.  
 
-## Admin Details
+## 🌍 Live Site  
+🔗 **[NikahLink Live Site](#)** (Replace with actual URL)  
 
-- **Admin Email**: admin@gmail.com
-- **Admin Password**: 123asd
+## 📜 Table of Contents  
+- [Features](#features)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Admin Access](#admin-access)  
+- [Dependencies](#dependencies)  
+- [Configuration](#configuration)  
+- [License](#license)  
 
-## Live Site URL
+## ✨ Features  
+✅ **User Registration** – Register with email/password or Google sign-in.  
+✅ **User Dashboard** – Manage biodata, contact requests, and favorites.  
+✅ **Premium Membership** – Unlock exclusive features like direct contact access.  
+✅ **Profile Creation** – Edit and maintain personal biodata.  
+✅ **Contact Requests** – Pay a fee to access contact details of other users.  
+✅ **Biodata Filters** – Search and filter by gender, age, location, and sorting options.  
+✅ **Biodata Details Page** – Private profile view for logged-in users.  
+✅ **Success Stories** – Read inspiring testimonials from successful matches.  
+✅ **Admin Dashboard** – Manage users, approve premium memberships, and monitor activities.  
+✅ **Privacy & Security** – Contact details are hidden for non-premium users.  
+✅ **Responsive Design** – Works across mobiles, tablets, and desktops.  
+✅ **Stripe Integration** – Secure payment processing via Stripe.  
 
-- [NikahLink Live Site](https://matrimony-site-8d674.web.app/)
-
-
-## Features
-
-- **User Registration**: Easy-to-use registration form with email/password or Google sign-in options.
-- **User Dashboard**: Users can manage their biodata, contact requests, and favourites.
-- **Premium Membership**: Premium users can access additional features such as viewing contact information directly.
-- **Profile Creation**: User can edit and create their own data.
-- **Contact Information Request**: Users can pay a fee to access contact information of other users.
-- **Biodata Filters**: Filter for biodata by gender, age, location with ascending/descending sorting.
-- **Biodata Details Page**: A private page to view biodata details, accessible only to logged-in users.
-- **Success Stories**: A section dedicated to sharing success stories of couples who found their partners through the platform.
-- **Admin Dashboard**: Admins can manage users, approve premium members, and handle contact requests.
-- **Privacy and Security**: All sensitive information is protected, with contact details hidden by default for non-premium users.
-- **Responsive Design**: The platform is fully responsive and works seamlessly across all devices, including mobiles and desktops.
-- **Stripe Integration**: Integrated with Stripe for secure payment processing.
