@@ -2,7 +2,7 @@
 
 Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed to connect individuals seeking life partners. Our platform ensures security, privacy, and convenience with features tailored for an efficient matchmaking experience.  
 
-![NikahLink Banner]([https://via.placeholder.com/1000x300?text=NikahLink+Matrimony+Platform](https://github.com/kamrul-islam-sunny/NikahLink-cilent/blob/ef715fb0bb9ef7660d9a3ef7b67aeb2484efdd34/image.png]))  
+![NikahLink Banner](https://via.placeholder.com/1000x300?text=NikahLink+Matrimony+Platform](https://github.com/kamrul-islam-sunny/NikahLink-cilent/blob/ef715fb0bb9ef7660d9a3ef7b67aeb2484efdd34/image.png))  
 
 ## 🚀 **Live Site**  
 
