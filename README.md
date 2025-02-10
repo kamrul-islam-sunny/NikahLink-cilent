@@ -1,28 +1,35 @@
-# Metro Money - Matrimony Platform
+# 💍 **NikahLink - Modern Matrimony Platform**  
 
-Welcome to **NikahLink**, a modern and easy-to-use matrimony platform designed to connect individuals looking for life partners. Our platform offers a seamless experience with a range of features designed to ensure security, user satisfaction, and ease of use.
+Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed to connect individuals seeking life partners. Our platform ensures security, privacy, and convenience with features tailored for an efficient matchmaking experience.  
 
-## Admin Details
+![NikahLink Banner](https://via.placeholder.com/1000x300?text=NikahLink+Matrimony+Platform)  
 
-- **Admin Email**: admin@gmail.com
-- **Admin Password**: 123asd
+## 🚀 **Live Site**  
 
-## Live Site URL
+🔗 **[NikahLink Live Site](https://matrimony-site-8d674.web.app/)**  
 
-- [NikahLink Live Site](https://matrimony-site-8d674.web.app/)
+---
 
+## 👤 **Admin Credentials**  
 
-## Features
+- **Admin Email**: `admin@gmail.com`  
+- **Admin Password**: `123asd`  
 
-- **User Registration**: Easy-to-use registration form with email/password or Google sign-in options.
-- **User Dashboard**: Users can manage their biodata, contact requests, and favourites.
-- **Premium Membership**: Premium users can access additional features such as viewing contact information directly.
-- **Profile Creation**: User can edit and create their own data.
-- **Contact Information Request**: Users can pay a fee to access contact information of other users.
-- **Biodata Filters**: Filter for biodata by gender, age, location with ascending/descending sorting.
-- **Biodata Details Page**: A private page to view biodata details, accessible only to logged-in users.
-- **Success Stories**: A section dedicated to sharing success stories of couples who found their partners through the platform.
-- **Admin Dashboard**: Admins can manage users, approve premium members, and handle contact requests.
-- **Privacy and Security**: All sensitive information is protected, with contact details hidden by default for non-premium users.
-- **Responsive Design**: The platform is fully responsive and works seamlessly across all devices, including mobiles and desktops.
-- **Stripe Integration**: Integrated with Stripe for secure payment processing.
+> ⚠️ *For security reasons, consider removing these credentials if making this public.*  
+
+---
+
+## ✨ **Features**  
+
+👉 **User Registration** – Register using Email/Password or Google sign-in.  
+👉 **User Dashboard** – Manage biodata, contact requests, and favorites.  
+👉 **Premium Membership** – Unlock exclusive features by upgrading.  
+👉 **Profile Management** – Create, edit, and update biodata easily.  
+👉 **Contact Requests** – Pay a fee to access user contact details.  
+👉 **Advanced Filters** – Search biodata by gender, age, location, etc.  
+👉 **Biodata Details** – Private biodata pages for registered users.  
+👉 **Success Stories** – Inspiring stories of successful matches.  
+👉 **Admin Dashboard** – Manage users, approve premium requests.  
+👉 **Privacy & Security** – Hide contact details for non-premium users.  
+👉 **Responsive Design** – Optimized for mobile and desktop users.  
+👉 **💳 Stripe Integration** – Secure payment processing for memberships.  
