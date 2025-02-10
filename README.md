@@ -30,11 +30,18 @@ Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed
 
 ## 🚀 **Technologies Used**
 
-- **React**: Frontend framework
-- **Firebase**: Authentication, database, hosting
-- **Stripe**: Payment processing for premium memberships
-- **Axios**: HTTP requests
-- **CSS**: Styling and responsive design
+- **Frontend**:
+  - **React**: Frontend framework
+  - **Firebase**: Authentication, database, hosting
+  - **Axios**: HTTP requests
+  - **React Bootstrap**: Responsive UI components
+  - **Stripe**: Payment processing for premium memberships
+
+- **Backend**:
+  - **Node.js**: Backend runtime environment
+  - **Express.js**: Web framework for Node.js
+  - **MongoDB**: NoSQL database for storing user and biodata information
+  - **JWT (JSON Web Tokens)**: For user authentication and security
 
 ## 📦 **Dependencies**
 
@@ -45,9 +52,15 @@ Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed
 - `stripe`
 - `react-bootstrap`
 - `react-icons`
+- `express`
+- `mongoose`
+- `jsonwebtoken`
+- `bcryptjs`
 
 ## 🛠️ **How to Run Locally**
 
+### Backend Setup
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/NikahLink.git
+
