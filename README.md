@@ -8,16 +8,12 @@ Welcome to **NikahLink**, a modern and user-friendly matrimony platform designed
 
 🔗 **[NikahLink Live Site](https://matrimony-site-8d674.web.app/)**  
 
----
 
 ## 👤 **Admin Credentials**  
 
 - **Admin Email**: `admin@gmail.com`  
-- **Admin Password**: `123asd`  
+- **Admin Password**: `123asd`    
 
-> ⚠️ *For security reasons, consider removing these credentials if making this public.*  
-
----
 
 ## ✨ **Features**  
 
